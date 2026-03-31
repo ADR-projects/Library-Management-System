@@ -27,3 +27,28 @@ open_records(request) - show issued books which are not returned yet
 closed_records(request) - show closed records which have been returned
 
 Add the necessary urls into myapp/urls.py match with views function names.
+from django.urls import path
+from . import views
+
+urlpatterns = [
+
+    # Dashboard
+    path('', views.dashboard, name='dashboard'),
+
+    # Users
+    path('users/', views.users, name='users'),
+    path('edit-user/<int:id>/', views.edit_user, name='edit_user'),
+    path('delete-user/<int:id>/', views.delete_user, name='delete_user'),
+
+    # Books
+    path('books/', views.books, name='books'),
+    path('edit-book/<int:id>/', views.edit_book, name='edit_book'),
+    path('delete-book/<int:id>/', views.delete_book, name='delete_book'),
+
+    # Records
+    path('borrow-book/', views.borrow_book, name='borrow_book'),
+    path('return-book/<int:id>/', views.return_book, name='return_book'),
+
+    path('open-records/', views.open_records, name='open_records'),
+    path('closed-records/', views.closed_records, name='closed_records'),     
+]
