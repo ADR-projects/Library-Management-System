@@ -1,23 +1,28 @@
+{% load static %}
 <!DOCTYPE html>
 <html>
 <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Library System</title>
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
 </head>
 <body>
+    {% load static %}
+    <div class="container">
+        <nav class="sidebar">
+            <div class="nav-header">Library System</div>
+            <a href="{% url 'dashboard' %}" class="nav-link">Dashboard</a>
+            <a href="{% url 'users' %}" class="nav-link">Users</a>
+            <a href="{% url 'books' %}" class="nav-link">Books</a>
+            <a href="{% url 'open_records' %}" class="nav-link">Open Records</a>
+            <a href="{% url 'closed_records' %}" class="nav-link">Closed Records</a>
+        </nav>
 
-    <nav>
-        <a href="{% url 'dashboard' %}">Dashboard</a> |
-        <a href="{% url 'users' %}">Users</a> |
-        <a href="{% url 'books' %}">Books</a> |
-        <a href="{% url 'open_records' %}">Open Records</a> |
-        <a href="{% url 'closed_records' %}">Closed Records</a>
-    </nav>
-
-    <hr>
-
-    <!-- PAGE CONTENT WILL COME HERE -->
-    {% block content %}
-    {% endblock %}
-
+        <main class="content">
+            {% block content %}
+            {% endblock %}
+        </main>
+    </div>
 </body>
 </html>
