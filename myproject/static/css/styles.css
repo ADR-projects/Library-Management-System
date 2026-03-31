@@ -9,6 +9,7 @@ body {
     background: linear-gradient(135deg, #eef2f7, #e3e9f1);
     color: #333;
 }
+
 .container {
     display: flex;
     min-height: 100vh;
@@ -16,12 +17,16 @@ body {
 
 .sidebar {
     width: 250px;
-    background-color: #2c3e50;
+    background: #323275;
+    background: linear-gradient(207deg, rgb(77, 136, 113) 0%, rgb(7, 52, 84) 35%, rgb(5, 38, 78) 100%);
     padding: 2rem 0;
     position: fixed;
     height: 100vh;
     overflow-y: auto;
-    box-shadow: 2px 0 8px rgba(0, 0, 0, 0.1);
+}
+
+.sidebar>a {
+    font-size: 1.2em;
 }
 
 .nav-header {
@@ -59,8 +64,10 @@ body {
 }
 
 .nav-link:hover {
+    text-decoration: none;
     color: #fff;
-    background-color: rgba(52, 152, 219, 0.25);
+    background: #2A7B9B;
+    background: linear-gradient(284deg, rgba(42, 123, 155, 0.13) 0%, rgba(87, 199, 134, 0.507) 50%, rgba(237, 221, 83, 0.506) 100%);
     border-left: 4px solid #5dade2;
     padding-left: calc(1.5rem - 4px);
 }
@@ -73,7 +80,12 @@ body {
     width: calc(100% - 250px);
 }
 
-h1, h2, h3, h4, h5, h6 {
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
     margin-bottom: 1.5rem;
     color: #2c3e50;
     font-weight: 600;
@@ -96,15 +108,17 @@ a {
 }
 
 a:hover {
-    color: #2980b9;
+    /* color: #2980b9; */
     text-decoration: underline;
 }
 
-button, input[type="submit"], input[type="button"] {
+button,
+input[type="submit"],
+input[type="button"] {
     background-color: #3498db;
     color: white;
     border: none;
-    padding: 0.75rem 1.5rem;
+    padding: 0.75rem 1.1rem;
     font-size: 0.95rem;
     border-radius: 4px;
     cursor: pointer;
@@ -112,12 +126,15 @@ button, input[type="submit"], input[type="button"] {
     font-weight: 500;
 }
 
-button:hover, input[type="submit"]:hover, input[type="button"]:hover {
+button:hover,
+input[type="submit"]:hover,
+input[type="button"]:hover {
     background-color: #2980b9;
     box-shadow: 0 2px 8px rgba(52, 152, 219, 0.3);
 }
 
-button:active, input[type="submit"]:active {
+button:active,
+input[type="submit"]:active {
     transform: translateY(1px);
 }
 
@@ -227,6 +244,27 @@ table a:hover {
     text-decoration: none;
 }
 
+.edit-btn:hover {
+    background-color: rgb(9, 179, 40) !important;
+    color: white;
+    transform: scale(1.2);
+    transition: all 0.3s ease;
+}
+
+.delete-btn:hover {
+    background-color: rgb(239, 79, 41) !important;
+    color: white;
+    transform: scale(1.2);
+    transition: all 0.3s ease;
+}
+
+.view-btn:hover {
+    background-color: rgb(0, 129, 230) !important;
+    color: white;
+    transform: scale(1.2);
+    transition: all 0.3s ease;
+}
+
 .clearfix::after {
     content: "";
     display: table;
@@ -298,6 +336,7 @@ table a:hover {
 .dashboard-card a:hover {
     text-decoration: underline;
 }
+
 .more-info {
     margin-top: auto;
     margin-left: -1.25rem;
@@ -315,20 +354,21 @@ table a:hover {
     width: 100%;
     color: #ffffff;
 }
+
 #user-card {
-    background-color:#189bb1;
+    background: linear-gradient(145deg, #61cadd 0%, #36b8d6 45%, #208daf 100%);
 }
 
 #book-card {
-    background-color:#fec107;
+    background: linear-gradient(145deg, #ffd97a 0%, #ffbe3d 50%, #eaa620 100%);
 }
 
 #open-rec-card {
-    background-color: #188754;
+    background: linear-gradient(145deg, #64d496 0%, #289d5f 50%, #127441 100%);
 }
 
 #closed-rec-card {
-    background-color: #dc3546;
+    background: linear-gradient(145deg, #ff8692 0%, #dd4c5d 50%, #99212f 100%);
 }
 
 
@@ -365,7 +405,8 @@ table a:hover {
         font-size: 0.9rem;
     }
 
-    table th, table td {
+    table th,
+    table td {
         padding: 0.75rem 0.5rem;
     }
 }
@@ -400,7 +441,8 @@ table a:hover {
         font-size: 0.85rem;
     }
 
-    table th, table td {
+    table th,
+    table td {
         padding: 0.5rem;
     }
 
@@ -418,19 +460,20 @@ table a:hover {
 .footer {
     position: fixed;
     bottom: 0;
-    left: 250px; /* matches sidebar */
+    left: 250px;
+    /* matches sidebar */
     width: calc(100% - 250px);
-    
+
     display: flex;
     justify-content: space-between;
     align-items: center;
 
     padding: 0.6rem 1.5rem;
-    
+
     background: rgba(255, 255, 255, 0.209);
     backdrop-filter: blur(12px) saturate(140%);
     -webkit-backdrop-filter: blur(12px) saturate(140%);
-    
+
     border-top: 1px solid rgba(0, 0, 0, 0.06);
     box-shadow: 0 -4px 20px rgba(0, 0, 0, 0.05);
 

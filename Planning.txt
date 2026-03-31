@@ -108,4 +108,4 @@ def add_user(request):
             user = form.save(commit=False)
             user.status = 'active'
             user.save()
-            return redirect('users')
+            return redirect('users') // i want to keep the UserForm Data in 'form'

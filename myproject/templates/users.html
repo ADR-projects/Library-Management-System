@@ -2,9 +2,9 @@
 
 {% block content %}
 
-<h2>Users</h2>
+<h2><i class="fa-solid fa-sm fa-user" style="color: rgba(0, 2, 43, 0.774);"></i> Users</h2>
 
-<a href="{% url 'add_user' %}"><button>Add User</button></a>
+<a href="{% url 'add_user' %}"><button><i class="fa-solid fa-user-plus" style="color: rgb(255, 255, 255);"></i>  Add User</button></a>
 
 <table border="1">
 <tr>
@@ -18,9 +18,9 @@
     <td>{{ user.name }}</td>
     <td>{{ user.email }}</td>
     <td>
-        <a href="{% url 'edit_user' user.id %}">Edit</a>
-        <a href="{% url 'delete_user' user.id %}">Delete</a>
-        <a href="{% url 'user_detail' user.id %}">View</a>
+        <a href="{% url 'edit_user' user.id %}"><i class="edit-btn fa-solid fa-pen-to-square" style="color: rgb(9, 179, 40);"></i></a>
+        <a href="{% url 'delete_user' user.id %}"><i class="delete-btn fa-solid fa-trash" style="color: rgb(239, 79, 41);"></i></a>
+        <a href="{% url 'user_detail' user.id %}"><i class="view-btn fa-solid fa-eye" style="color: rgb(0, 129, 230);"></i></a>
     </td>
 </tr>
 {% endfor %}

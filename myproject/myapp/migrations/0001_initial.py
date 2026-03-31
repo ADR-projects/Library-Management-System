@@ -44,8 +44,8 @@ class Migration(migrations.Migration):
             fields=[
                 ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
                 ('status', models.CharField(default='open', max_length=10)),
-                ('issue_date', models.DateTimeField(auto_now_add=True)),
-                ('return_date', models.DateTimeField(blank=True, null=True)),
+                ('issue_date', models.DateField(auto_now_add=True)),
+                ('return_date', models.DateField(blank=True, null=True)),
                 ('book', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='myapp.book')),
                 ('user', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='myapp.user')),
             ],
