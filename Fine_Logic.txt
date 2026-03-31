@@ -1,0 +1,10 @@
+Fine = ₹2 per day after 7 days from issue_date
+Only for records where return_date is NULL (i.e., open records)
+
+Do NOT store fine in database
+Calculate dynamically when needed
+
+Then, we ensure:
+Always up-to-date
+No redundancy
+No extra migrations needed
