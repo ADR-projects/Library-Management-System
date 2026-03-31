@@ -1,0 +1,28 @@
+models -> migrate -> forms -> views -> urls
+templates
+static
+
+models:-------------
+User, Book, Records (user, book : foreign ; status (Char Field)
+
+migrations and migrate
+
+forms.py-------------
+import the models, make forms for Book, user, Borrow (New Open Record)
+
+views.py--------------
+
+dashboard(request) - count users books records (open and closed)
+show and add users - users(request)
+delete_user(request, id)
+edit_user(request, id)
+
+books(request) - show and add book
+delete_book(request, id)
+edit_book(request, id)
+
+borrow_book(request)
+return_book(request, id)
+open_records(request) - show issued books which are not returned yet
+closed_records(request) - show closed records which have been returned
+
