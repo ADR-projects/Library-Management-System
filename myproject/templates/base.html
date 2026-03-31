@@ -1,17 +1,23 @@
 {% load static %}
 <!DOCTYPE html>
 <html>
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Library System</title>
     <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
+
 <body>
     {% load static %}
     <div class="container">
         <nav class="sidebar">
-            <div class="nav-header">Library System</div>
+            <div class="nav-header">
+                <img class="nav-header-icon" src="{% static 'images/book-nav.png' %}" alt="Library logo">
+                <div class="nav-header-title">Library System</div>
+            </div>
             <a href="{% url 'dashboard' %}" class="nav-link">Dashboard</a>
             <a href="{% url 'users' %}" class="nav-link">Users</a>
             <a href="{% url 'books' %}" class="nav-link">Books</a>
@@ -24,5 +30,10 @@
             {% endblock %}
         </main>
     </div>
+    <div class="footer">
+        <span>© 2026 Library Management Suite</span>
+        <span>Built with 💙 with Django</span>
+    </div>
 </body>
+
 </html>
