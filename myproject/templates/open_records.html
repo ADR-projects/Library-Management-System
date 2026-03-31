@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<h2>Open Records</h2>
+
+<table border="1">
+<tr>
+    <th>User</th>
+    <th>Book</th>
+    <th>Issue Date</th>
+    <th>Actions</th>
+</tr>
+
+{% for record in open_records %}
+<tr>
+    <td>{{ record.user }}</td>
+    <td>{{ record.book }}</td>
+    <td>{{ record.issue_date }}</td>
+    <td>
+        <a href="{% url 'return_book' record.id %}">Return</a>
+        <a href="{% url 'record_detail' record.id %}">View</a>
+    </td>
+</tr>
+{% endfor %}
+
+</table>
+
+{% endblock %}

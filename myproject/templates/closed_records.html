@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<h2>Closed Records</h2>
+
+<table border="1">
+<tr>
+    <th>User</th>
+    <th>Book</th>
+    <th>Return Date</th>
+</tr>
+
+{% for record in closed_records %}
+<tr>
+    <td>{{ record.user }}</td>
+    <td>{{ record.book }}</td>
+    <td>{{ record.return_date }}</td>
+</tr>
+{% endfor %}
+
+</table>
+
+{% endblock %}

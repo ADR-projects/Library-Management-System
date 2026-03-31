@@ -71,6 +71,7 @@ path('record/<int:id>/', views.record_detail, name='record_detail'),
 
 ]
 
+
 templates
 templates/myapps/
 

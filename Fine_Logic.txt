@@ -8,3 +8,15 @@ Then, we ensure:
 Always up-to-date
 No redundancy
 No extra migrations needed
+
+Availablelogic:
+Book model :
+ def available_books(self):
+        from .models import Record
+
+        borrowed_count = Record.objects.filter(
+            book=self,
+            return_date__isnull=True   # only open records
+        ).count()
+
+        return self.stock - borrowed_count
