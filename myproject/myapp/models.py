@@ -1,4 +1,5 @@
 from django.db import models
+from django.utils import timezone
 
 # Create your models here.
 status_choices = [
@@ -16,6 +17,9 @@ class User(models.Model):
     class Meta:
         db_table = 'user_table'
 
+    def __str__(self):
+        return self.name
+
 class Book(models.Model):
     title = models.CharField(max_length=100)
     author = models.CharField(max_length=100)
@@ -25,6 +29,9 @@ class Book(models.Model):
     class Meta:
         db_table = 'book_table'
 
+    def __str__(self):
+        return self.title
+
 class Record(models.Model):
     user = models.ForeignKey('User', on_delete=models.CASCADE)
     book = models.ForeignKey('Book', on_delete=models.CASCADE)
@@ -32,10 +39,10 @@ class Record(models.Model):
     status = models.CharField(max_length=10, default='open')  
     # values: 'open' (not returned), 'closed' (returned)
 
-    issue_date = models.DateTimeField(auto_now_add=True)  
-    # automatically set when record is created
+    issue_date = models.DateField(default=timezone.now)
+    # can be selected while borrowing; defaults to now if omitted
 
-    return_date = models.DateTimeField(null=True, blank=True)  
+    return_date = models.DateField(null=True, blank=True)  
     # null = not returned yet 
 
     class Meta:

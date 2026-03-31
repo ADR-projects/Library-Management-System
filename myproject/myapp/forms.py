@@ -33,9 +33,37 @@ class BookForm(forms.ModelForm):
 class RecordForm(forms.ModelForm):
     class Meta:
         model = Record
-        fields = ['user', 'book']
+        fields = ['user', 'book', 'issue_date']
 
         labels = {
             'user': 'Select User',
-            'book': 'Select Book'
+            'book': 'Select Book',
+            'issue_date': 'Issue Date'
         }
+
+        widgets = {
+            'issue_date': forms.DateInput(
+                attrs={'type': 'date'}
+            )
+        }
+
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        self.fields['issue_date'].input_formats = ['%Y-%m-%d']
+
+class ReturnRecordForm(forms.ModelForm):
+    class Meta:
+        model = Record
+        fields = ['return_date']
+        labels = {
+            'return_date': 'Return Date'
+        }
+        widgets = {
+            'return_date': forms.DateInput(
+                attrs={'type': 'date'}
+            )
+        }
+
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        self.fields['return_date'].input_formats = ['%Y-%m-%d']

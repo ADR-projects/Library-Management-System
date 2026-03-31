@@ -1,5 +1,5 @@
-from django.shortcuts import render, redirect
-from .forms import UserForm, BookForm, RecordForm
+from django.shortcuts import render, redirect, get_object_or_404
+from .forms import UserForm, BookForm, RecordForm, ReturnRecordForm
 from .models import User, Book, Record
 
 
@@ -23,8 +23,12 @@ def users(request):
 def add_user(request):
     if request.method == 'POST':
         form = UserForm(request.POST)
+        # Status is assigned internally when creating a user!!!
+        form.fields['status'].required = False
         if form.is_valid():
-            form.save()
+            user = form.save(commit=False)
+            user.status = 1     # Active User (newly added!!)
+            user.save()
             return redirect('users')
     else:
         form = UserForm()
@@ -37,8 +41,10 @@ def edit_user(request, id):
 
     if request.method == 'POST':
         form = UserForm(request.POST, instance=user)
+        form.fields['status'].required = False
         if form.is_valid():
-            form.save()
+            user = form.save(commit=False)
+            user.save()
             return redirect('users')
     else:
         form = UserForm(instance=user)
@@ -98,7 +104,7 @@ def delete_book(request, id):
 
 def book_detail(request, id):
     book = Book.objects.get(id=id)
-    return render(request, 'book_detail.html', {'book': book})
+    return render(request, 'book_details.html', {'book': book})
 
 
 # Records
@@ -116,16 +122,25 @@ def borrow_book(request):
 
 
 def return_book(request, id):
-    record = Record.objects.get(id=id)
-    record.status = 'closed'
-    record.return_date = record.return_date or record.issue_date  # simple placeholder
-    record.save()
+    if request.method != 'POST':
+        return redirect('open_records')
+
+    record = get_object_or_404(Record, id=id, status='open')
+    form = ReturnRecordForm(request.POST, instance=record)
+    if form.is_valid():
+        returned_record = form.save(commit=False)
+        returned_record.status = 'closed'
+        returned_record.save()
     return redirect('open_records')
 
 
 def open_records(request):
     records = Record.objects.filter(status='open')
-    return render(request, 'open_records.html', {'open_records': records})
+    context = {
+        'open_records': records,
+        'return_form': ReturnRecordForm(),
+    }
+    return render(request, 'open_records.html', context)
 
 
 def closed_records(request):
@@ -135,4 +150,4 @@ def closed_records(request):
 
 def record_detail(request, id):
     record = Record.objects.get(id=id)
-    return render(request, 'record_detail.html', {'record': record})
+    return render(request, 'record_details.html', {'record': record})
