@@ -13,18 +13,26 @@ import the models, make forms for Book, user, Borrow (New Open Record)
 views.py--------------
 
 dashboard(request) - count users books records (open and closed)
-show and add users - users(request)
+
+show users - users(request)
+add_user(request)
 delete_user(request, id)
 edit_user(request, id)
 
-books(request) - show and add book
+show books - books(request)
+add_book(request)
 delete_book(request, id)
 edit_book(request, id)
 
 borrow_book(request)
 return_book(request, id)
+
 open_records(request) - show issued books which are not returned yet
 closed_records(request) - show closed records which have been returned
+
+user_detail(request, id)
+book_detail(request, id)
+record_detail(request, id)
 
 Add the necessary urls into myapp/urls.py match with views function names.
 from django.urls import path
@@ -32,23 +40,57 @@ from . import views
 
 urlpatterns = [
 
-    # Dashboard
-    path('', views.dashboard, name='dashboard'),
+```
+# Dashboard  
+path('', views.dashboard, name='dashboard'),  
 
-    # Users
-    path('users/', views.users, name='users'),
-    path('edit-user/<int:id>/', views.edit_user, name='edit_user'),
-    path('delete-user/<int:id>/', views.delete_user, name='delete_user'),
+# Users  
+path('users/', views.users, name='users'),  
+path('add-user/', views.add_user, name='add_user'),  
+path('edit-user/<int:id>/', views.edit_user, name='edit_user'),  
+path('delete-user/<int:id>/', views.delete_user, name='delete_user'),  
 
-    # Books
-    path('books/', views.books, name='books'),
-    path('edit-book/<int:id>/', views.edit_book, name='edit_book'),
-    path('delete-book/<int:id>/', views.delete_book, name='delete_book'),
+# Books  
+path('books/', views.books, name='books'),  
+path('add-book/', views.add_book, name='add_book'),  
+path('edit-book/<int:id>/', views.edit_book, name='edit_book'),  
+path('delete-book/<int:id>/', views.delete_book, name='delete_book'),  
 
-    # Records
-    path('borrow-book/', views.borrow_book, name='borrow_book'),
-    path('return-book/<int:id>/', views.return_book, name='return_book'),
+# Records  
+path('borrow-book/', views.borrow_book, name='borrow_book'),  
+path('return-book/<int:id>/', views.return_book, name='return_book'),  
 
-    path('open-records/', views.open_records, name='open_records'),
-    path('closed-records/', views.closed_records, name='closed_records'),     
+path('open-records/', views.open_records, name='open_records'),  
+path('closed-records/', views.closed_records, name='closed_records'),  
+
+#Details  
+path('user/<int:id>/', views.user_detail, name='user_detail'),  
+path('book/<int:id>/', views.book_detail, name='book_detail'),  
+path('record/<int:id>/', views.record_detail, name='record_detail'),  
+```
+
 ]
+
+templates
+templates/myapps/
+
+DASHBOARD-RELATED
+├── dashboard.html
+
+USER-RELATED
+├── users.html
+├── add_user.html
+├── edit_user.html
+├── user_detail.html
+
+BOOK-RELATED
+├── books.html
+├── add_book.html
+├── edit_book.html
+├── book_detail.html
+
+RECORD-RELATED
+├── borrow_book.html
+├── open_records.html
+├── closed_records.html
+├── record_detail.html
