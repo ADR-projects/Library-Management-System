@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<h2>Add User</h2>
+
+<form method="POST">
+    {% csrf_token %}
+
+    {% if form.errors %}
+        <div style="color:red;">
+            {{ form.errors }}
+        </div>
+    {% endif %}
+
+    <label>Name</label>
+    {{ form.name }}
+
+    <label>Email</label>
+    {{ form.email }}
+
+    <label>Phone</label>
+    {{ form.phone }}
+
+    <label>Address</label>
+    {{ form.address }}
+
+    <br><br>
+
+    <button type="submit">Submit</button>
+</form>
+
+{% endblock %}

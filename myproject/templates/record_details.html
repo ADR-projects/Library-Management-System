@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<h2>Record Details</h2>
+
+<p>User: {{ record.user }}</p>
+<p>Book: {{ record.book }}</p>
+<p>Issue Date: {{ record.issue_date }}</p>
+<p>Return Date: {{ record.return_date }}</p>
+<p>Status: {{ record.status }}</p>
+
+{% endblock %}

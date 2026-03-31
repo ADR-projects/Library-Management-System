@@ -1,0 +1,14 @@
+post method logic for forms. add and also edit:::
+     user, book, borrow (only borrow if active) (no edit)
+
+delete logic (user - only delete if active, book)
+    book delete only if not borrowed
+
+record: open or closed?
+    'return the book' only if open (whether paid or unpaid)
+
+
+dashboard me count of user ,book ,open_record, closed_record
+
+Available logic
+Fine Logic

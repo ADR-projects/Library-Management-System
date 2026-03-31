@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Library System</title>
+</head>
+<body>
+
+    <nav>
+        <a href="{% url 'dashboard' %}">Dashboard</a> |
+        <a href="{% url 'users' %}">Users</a> |
+        <a href="{% url 'books' %}">Books</a> |
+        <a href="{% url 'open_records' %}">Open Records</a> |
+        <a href="{% url 'closed_records' %}">Closed Records</a>
+    </nav>
+
+    <hr>
+
+    <!-- PAGE CONTENT WILL COME HERE -->
+    {% block content %}
+    {% endblock %}
+
+</body>
+</html>

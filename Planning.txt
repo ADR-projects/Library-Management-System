@@ -4,11 +4,14 @@ static
 
 models:-------------
 User, Book, Records (user, book : foreign ; status (Char Field)
+Available logic pending 
+Fine logic Pending 
 
 migrations and migrate
 
 forms.py-------------
 import the models, make forms for Book, user, Borrow (New Open Record)
+
 
 views.py--------------
 
@@ -71,6 +74,7 @@ path('record/<int:id>/', views.record_detail, name='record_detail'),
 
 ]
 
+
 templates
 templates/myapps/
 
@@ -94,3 +98,14 @@ RECORD-RELATED
 ├── open_records.html
 ├── closed_records.html
 ├── record_detail.html
+
+# adding a user logic 
+
+def add_user(request):
+    if request.method == 'POST':
+        form = UserForm(request.POST)
+        if form.is_valid():
+            user = form.save(commit=False)
+            user.status = 'active'
+            user.save()
+            return redirect('users')
