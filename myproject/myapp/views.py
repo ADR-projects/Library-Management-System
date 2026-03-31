@@ -5,7 +5,13 @@ from .models import User, Book, Record
 
 # Dashboard
 def dashboard(request):
-    return render(request, 'dashboard.html')
+    context = {
+        'users_count': User.objects.count(),
+        'books_count': Book.objects.count(),
+        'open_records_count': Record.objects.filter(status='open').count(),
+        'closed_records_count': Record.objects.filter(status='closed').count(),
+    }
+    return render(request, 'dashboard.html', context)
 
 # Users
 
