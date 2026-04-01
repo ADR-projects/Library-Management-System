@@ -139,8 +139,8 @@ It simulates real-world library operations with features like **dynamic fine cal
 
 ### Database
 
-* SQLite
 * MySQL
+* MariaDB 
 
 ---
 
@@ -197,7 +197,6 @@ librarymanagement/
 │       ├── css/
 │       ├── images/
 
-└── db.sqlite3
 ```
 
 ---
