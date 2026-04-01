@@ -141,7 +141,7 @@ It simulates real-world library operations with features like **dynamic fine cal
 ### Database
 
 * SQLite
-  MySQL
+* MySQL
 
 ---
 
