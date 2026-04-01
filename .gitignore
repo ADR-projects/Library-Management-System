@@ -1,39 +1,51 @@
+
+# Python Cache Files
 __pycache__/
+myproject/myapp/__pycache__/
 *.py[cod]
 *$py.class
 
-# Virtual Environment
+# Virtual Environment (uv / venv)
+.venv/
 venv/
 env/
 ENV/
-.venv/
 
-*.log
-local_settings.py
+
+# Django Files
 db.sqlite3
 db.sqlite3-journal
+local_settings.py
 
-# Media & Static (optional - depends on your setup)
+
+# Static & Media (if generated)
 media/
 staticfiles/
 
+
+# Environment Variables
 .env
 .env.*
 
-.vscode/
+# Logs
+*.log
 
+# IDE / Editor
+.vscode/
 .idea/
 
+
+# OS Files
 .DS_Store
 Thumbs.db
 
+
+# Testing / Coverage
 .coverage
 coverage.xml
 htmlcov/
 .pytest_cache/
 
-
-*.log
-
+# Security Files
 *.pem
 *.key
