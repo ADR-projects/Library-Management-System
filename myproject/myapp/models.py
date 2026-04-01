@@ -26,6 +26,16 @@ class Book(models.Model):
     genre = models.CharField(max_length=100)
     stock = models.IntegerField()
 
+    def available_books(self):
+        from .models import Record
+
+        borrowed_count = Record.objects.filter(
+            book=self,
+            return_date__isnull=True   # only open records
+        ).count()
+
+        return self.stock - borrowed_count
+
     class Meta:
         db_table = 'book_table'
 
@@ -51,5 +61,7 @@ class Record(models.Model):
 
     def __str__(self):
         return f"{self.user} - {self.book} ({self.status})"
+
+
 
      
