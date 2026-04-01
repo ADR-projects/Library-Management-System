@@ -2,12 +2,16 @@
 
 {% block content %}
 
-<h2>User Details</h2>
-
-<p>User_ID: {{user.id}}</p>
-<p>Name: {{ user.name }}</p>
-<p>Email: {{ user.email }}</p>
-<p>Phone: {{ user.phone }}</p>
-<p>Address: {{ user.address }}</p>
+<h2 id="detail-h2">User Details</h2>
+<div class ="detail-container">
+	<p><strong>User_ID:</strong> {{user.id}}</p>
+	<p><strong>Name:</strong> {{ user.name }}</p>
+	<p><strong>Email:</strong> {{ user.email }}</p>
+	<p><strong>Phone:</strong> {{ user.phone }}</p>
+	<p><strong>Address:</strong> {{ user.address }}</p>
+	<a href="{% url 'users' %}">
+		<button style="background-color:rgb(44, 61, 96); margin-bottom: -10px; margin-top: 5px">Back To List</button>
+	</a>
+</div>
 
 {% endblock %}

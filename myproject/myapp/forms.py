@@ -14,6 +14,14 @@ class UserForm(forms.ModelForm):
             'phone': forms.TextInput(attrs={'placeholder': 'Enter Phone'}),
             'address': forms.Textarea(attrs={'placeholder': 'Enter Address'}),
         }
+        def clean(self):
+            cleaned_data = super().clean()
+            email = cleaned_data.get('email')
+
+            if User.objects.filter(email=email).exists():
+                self.add_error("User with this Email already exists!")
+
+            return cleaned_data
 
 
 # Book Form (Add + Edit)
@@ -21,12 +29,6 @@ class BookForm(forms.ModelForm):
     class Meta:
         model = Book
         fields = '__all__'
-
-        widgets = {
-            'book_name': forms.TextInput(attrs={'placeholder': 'Enter Book Name'}),
-            'author': forms.TextInput(attrs={'placeholder': 'Enter Author'}),
-            'stock': forms.NumberInput(attrs={'placeholder': 'Enter Stock'}),
-        }
 
 
 # Borrow Book Form (Create Record)
@@ -50,6 +52,8 @@ class RecordForm(forms.ModelForm):
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
         self.fields['issue_date'].input_formats = ['%Y-%m-%d']
+        open_user_ids = Record.objects.filter(status='open').values_list('user_id', flat=True)
+        self.fields['user'].queryset = User.objects.exclude(id__in=open_user_ids)
 
 class ReturnRecordForm(forms.ModelForm):
     class Meta:

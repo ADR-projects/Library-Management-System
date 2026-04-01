@@ -14,7 +14,26 @@ body {
     display: flex;
     min-height: 100vh;
 }
-
+.detail-container {
+    max-width: 500px;
+    margin: 60px auto;              /* center horizontally + spacing */
+    padding: 25px 30px;
+    background-color: #ffffff;
+    border-radius: 10px;
+    border-top: 3px solid rgb(44, 61, 96);
+    box-shadow: 0 4px 12px rgba(41, 69, 83, 0.08);
+    font-family: Arial, sans-serif;
+}
+#detail-h2{
+    margin-top:2em;
+    margin-bottom: -1em;
+    text-align:center;
+}
+.detail-container p {
+    font-size: 16px;
+    margin: 10px 0;
+    color: #333;
+}
 .sidebar {
     width: 250px;
     background: #323275;
@@ -102,6 +121,35 @@ p {
     line-height: 1.6;
 }
 
+.messages {
+    margin-bottom: 1rem;
+}
+
+.alert {
+    padding: 0.75rem 1rem;
+    border-radius: 6px;
+    margin-bottom: 0.6rem;
+    font-size: 0.92rem;
+}
+
+.alert-success {
+    background-color: #e8f7ee;
+    color: #1d6b3b;
+    border: 1px solid #b6e2c7;
+}
+
+.alert-error {
+    background-color: #fceceb;
+    color: #962a2a;
+    border: 1px solid #f0b5b2;
+}
+
+.alert-info {
+    background-color: #edf4fe;
+    color: #1d4f8c;
+    border: 1px solid #b7d0f5;
+}
+
 a {
     text-decoration: none;
     transition: color 0.3s ease;
@@ -143,6 +191,33 @@ a button {
     margin-bottom: 1rem;
 }
 
+table a.return-btn-green {
+    display: inline-block;
+    margin-right: 0.5rem;
+    margin-bottom: 0;
+    padding: 6px 10px;
+    font-size: 0.9rem;
+    font-weight: 500;
+    line-height: 1.2;
+    color: #fff !important;
+    background-color: #06b11d !important;
+    border: 1px solid #059518;
+    border-radius: 4px;
+    text-decoration: none;
+    transition: background-color 0.2s ease, border-color 0.2s ease;
+}
+table a.return-btn-red{
+    background-color: rgb(194, 0, 0) !important;
+}
+table a.return-btn-green:hover {
+    background-color: #059518 !important;
+    border-color: #047a13;
+    color: #fff ;
+    text-decoration: none;
+}
+table a.return-btn-red:hover{
+    background-color: #8a0404 !important;
+}
 form {
     background-color: white;
     padding: 2rem;
@@ -232,6 +307,16 @@ table a {
     border-radius: 4px;
     font-size: 0.85rem;
     transition: all 0.3s ease;
+}
+
+table .locked-action {
+    display: inline-block;
+    margin-right: 1rem;
+    padding: 0.4rem 0.8rem;
+    background-color: #ecf0f1;
+    border-radius: 4px;
+    font-size: 0.85rem;
+    opacity: 0.85;
 }
 
 table a:last-child {
@@ -334,7 +419,7 @@ table a:hover {
 }
 
 .dashboard-card a:hover {
-    text-decoration: underline;
+    text-decoration: none;
 }
 
 .more-info {

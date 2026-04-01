@@ -1,6 +1,7 @@
 from django.db import models
 from django.utils import timezone
 
+
 # Create your models here.
 status_choices = [
     (0, 'Inactive'),
@@ -16,6 +17,9 @@ class User(models.Model):
 
     class Meta:
         db_table = 'user_table'
+        constraints = [
+            models.UniqueConstraint(fields=['email'], name='unique_email')
+        ]
 
     def __str__(self):
         return self.name
@@ -58,6 +62,31 @@ class Record(models.Model):
     class Meta:
         db_table = 'record_table'
 
+    def calculate_fine(self):
+        if self.status == 'open':
+            end_date = timezone.now().date()
+        else:
+            end_date = self.return_date or timezone.now().date()
+
+        end_date = end_date.date() if hasattr(end_date, 'date') else end_date
+
+        issue_date = self.issue_date.date() if hasattr(self.issue_date, 'date') else self.issue_date
+        days_passed = (end_date - issue_date).days
+
+        if days_passed < 0:
+            return 0
+
+        # First 7 days free
+        if days_passed <= 7:
+            return 0
+        
+        fine = (days_passed - 7) * 2
+        return fine
+
+    @property
+    def fine(self):
+        return self.calculate_fine()
+    
 
     def __str__(self):
         return f"{self.user} - {self.book} ({self.status})"
