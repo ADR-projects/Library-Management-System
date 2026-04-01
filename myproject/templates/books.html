@@ -4,9 +4,15 @@
 
 <h2><i class="fa-solid fa-sm fa-book" style="color: rgba(0, 2, 43, 0.774);"></i> Books</h2>
 
-<a href="{% url 'add_book' %}"><button><i class="fa-solid fa-sm fa-book" style="color: rgb(255, 255, 255);"></i>  Add Book</button></a>
+<div class="search-bar-container">
+    <div class="search-wrapper">
+      <i class="fa-solid fa-magnifying-glass"></i>
+      <input type="text" id="bookSearch" class="search-input" placeholder="Search by title, author, or genre...">
+    </div>
+    <a href="{% url 'add_book' %}"><button class = "beside-search-bar-btn"><i class="fa-solid fa-sm fa-book" style="color: rgb(255, 255, 255);"></i>  Add Book</button></a>
+  </div>
 
-<table border="1">
+<table border="1" id="booksTable"><tbody>
 <tr>
     <th>Book_ID</th>
     <th>Name</th>
@@ -36,7 +42,15 @@
     </td>
 </tr>
 {% endfor %}
+</tbody></table>
 
-</table>
+<script>
+  document.getElementById('bookSearch').addEventListener('keyup', function(e) {
+    const query = e.target.value.toLowerCase();
+    document.querySelectorAll('#booksTable tbody tr').forEach(row => {
+      row.style.display = row.textContent.toLowerCase().includes(query) ? '' : 'none';
+    });
+  });
+</script>
 
 {% endblock %}
