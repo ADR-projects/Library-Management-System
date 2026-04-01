@@ -4,9 +4,15 @@
 
 <h2><i class="fa-solid fa-sm fa-user" style="color: rgba(0, 2, 43, 0.774);"></i> Users</h2>
 
-<a href="{% url 'add_user' %}"><button><i class="fa-solid fa-user-plus" style="color: rgb(255, 255, 255);"></i>  Add User</button></a>
+<div class="search-bar-container">
+    <div class="search-wrapper">
+      <i class="fa-solid fa-magnifying-glass"></i>
+      <input type="text" id="userSearch" class="search-input" placeholder="Search by name, email, or phone...">
+    </div>
+    <a href="{% url 'add_user' %}"><button class = "beside-search-bar-btn"><i class="fa-solid fa-user-plus" style="color: rgb(255, 255, 255);"></i>  Add User</button></a>
+  </div>
 
-<table border="1">
+<table border="1" id="usersTable"><tbody>
 <tr>
     <th>User_ID</th>
     <th>Name</th>
@@ -32,7 +38,15 @@
     </td>
 </tr>
 {% endfor %}
+</tbody></table>
 
-</table>
+<script>
+  document.getElementById('userSearch').addEventListener('keyup', function(e) {
+    const query = e.target.value.toLowerCase();
+    document.querySelectorAll('#usersTable tbody tr').forEach(row => {
+      row.style.display = row.textContent.toLowerCase().includes(query) ? '' : 'none';
+    });
+  });
+</script>
 
 {% endblock %}

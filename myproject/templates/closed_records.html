@@ -4,7 +4,14 @@
 
 <h2><i class="fa-solid fa-sm fa-folder-closed" style="color: rgba(0, 2, 43, 0.774);"></i> Closed Records</h2>
 
-<table border="1">
+<div class="search-bar-container">
+    <div class="search-wrapper">
+      <i class="fa-solid fa-magnifying-glass"></i>
+      <input type="text" id="closedSearch" class="search-input" placeholder="Search by user, book, or author...">
+    </div>
+</div>
+
+<table border="1" id="closedRecordsTable"><tbody>
 <tr>
     <th>Borrow_ID</th>
     <th>User</th>
@@ -33,7 +40,15 @@
     <!-- <td>{{record.fine}}</td> -->
 </tr>
 {% endfor %}
+</tbody></table>
 
-</table>
+<script>
+  document.getElementById('closedRecordSearch').addEventListener('keyup', function(e) {
+    const query = e.target.value.toLowerCase();
+    document.querySelectorAll('#closedRecordsTable tbody tr').forEach(row => {
+      row.style.display = row.textContent.toLowerCase().includes(query) ? '' : 'none';
+    });
+  });
+</script>
 
 {% endblock %}

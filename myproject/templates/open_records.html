@@ -8,17 +8,23 @@
   Open Records
 </h2>
 
-<a href="{% url 'borrow_book' %}"
-  ><button>
-    <i
-      class="fa-brands fa-sm fa-get-pocket"
-      style="color: rgb(255, 255, 255)"
-    ></i>
-    Borrow Book
-  </button></a
->
+<div class="search-bar-container">
+    <div class="search-wrapper">
+      <i class="fa-solid fa-magnifying-glass"></i>
+      <input type="text" id="openRecordSearch" class="search-input" placeholder="Search by user, book, or author...">
+    </div>
+  <a href="{% url 'borrow_book' %}"
+    ><button class = "beside-search-bar-btn">
+      <i
+        class="fa-brands fa-sm fa-get-pocket"
+        style="color: rgb(255, 255, 255)"
+      ></i>
+      Borrow Book
+    </button></a
+  >
+</div>
 
-<table border="1">
+<table border="1" id="openRecordsTable"><tbody>
   <tr>
     <th>Borrow_ID</th>
     <th>User</th>
@@ -58,27 +64,15 @@
     </td>
   </tr>
   {% endfor %}
-</table>
+</tbody></table>
 
 <script>
-  /**
-  function openReturnModal(modalId) {
-      document.getElementById(modalId).style.display = 'block';
-  }
-  
-  function closeReturnModal(modalId) {
-      document.getElementById(modalId).style.display = 'none';
-  }
-  
-  window.onclick = function(event) {
-      const modals = document.getElementsByClassName('return-modal');
-      for (let i = 0; i < modals.length; i++) {
-          if (event.target === modals[i]) {
-              modals[i].style.display = 'none';
-          }
-      }
-  };
-  */
+  document.getElementById('openRecordSearch').addEventListener('keyup', function(e) {
+    const query = e.target.value.toLowerCase();
+    document.querySelectorAll('#openRecordsTable tbody tr').forEach(row => {
+      row.style.display = row.textContent.toLowerCase().includes(query) ? '' : 'none';
+    });
+  });
 </script>
 
 {% endblock %}
