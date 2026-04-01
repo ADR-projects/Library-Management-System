@@ -164,14 +164,13 @@ def edit_book(request, id):
                 title=title,
                 author=author,
                 genre=genre
-            ).first()
+            ).exclude(id=book.id).first()
 
             if existing_book:
                 # Update stock instead of creating new entry of BOOK!!!
                 existing_book.stock += stock
                 existing_book.save()
-                currentBook = Book.objects.get(id=id)
-                currentBook.delete()
+                book.delete()
             else:
                 form.save()
 
