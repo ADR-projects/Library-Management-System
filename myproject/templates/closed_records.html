@@ -21,9 +21,16 @@
     <td>{{ record.user }}</td>
     <td>{{record.book}}</td>
     <td>{{record.book.author}}</td>
-    <td>{{ record.issue_date|date:"Y-m-d" }}</td>
-    <td>{{ record.return_date|date:"Y-m-d" }}</td>
-    <td></td>
+    <td>{{ record.issue_date|date:"d-m-Y" }}</td>
+    <td>{{ record.return_date|date:"d-m-Y" }}</td>
+    <td>
+        {% if record.fine > 0 %}
+        <span style="color: red">₹ {{ record.fine|floatformat:2 }}</span>
+        {% else %}
+        <span style="color: green">₹ 0.00</span>
+        {% endif %}
+    </td>
+    <!-- <td>{{record.fine}}</td> -->
 </tr>
 {% endfor %}
 

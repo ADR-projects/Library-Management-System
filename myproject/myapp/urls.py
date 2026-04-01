@@ -20,8 +20,9 @@ path('delete-book/<int:id>/', views.delete_book, name='delete_book'),
 # Records  
 path('borrow-book/', views.borrow_book, name='borrow_book'),  
 path('return-book/<int:id>/', views.return_book, name='return_book'),  
-path('open-records/', views.open_records, name='open_records'),  
+path('open_records/', views.open_records, name='open_records'),  
 path('closed-records/', views.closed_records, name='closed_records'),  
+path('return-book/<int:record_id>/', views.return_book, name='return_book'),
 
 #Details  
 path('user/<int:id>/', views.user_detail, name='user_detail'),  
