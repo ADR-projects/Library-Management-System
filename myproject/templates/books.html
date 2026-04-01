@@ -8,8 +8,10 @@
 
 <table border="1">
 <tr>
+    <th>Book_ID</th>
     <th>Name</th>
     <th>Author</th>
+    <th>Genre</th>
     <th>Stock</th>
     <th>Availability</th>
     <th>Actions</th>
@@ -17,10 +19,12 @@
 
 {% for book in books %}
 <tr>
+    <td>{{book.id}}</td>
     <td>{{ book.title }}</td>
     <td>{{ book.author }}</td>
+    <td>{{book.genre}}</td>
     <td>{{ book.stock }}</td>
-    <td></td>
+    <td>{{book.available_books }}</td>
     <td>
         <a href="{% url 'edit_book' book.id %}"><i class="edit-btn fa-solid fa-pen-to-square" style="color: rgb(9, 179, 40);"></i></a>
         <a href="{% url 'delete_book' book.id %}"><i class="delete-btn fa-solid fa-trash" style="color: rgb(239, 79, 41);"></i></a>

@@ -6,18 +6,24 @@
 
 <table border="1">
 <tr>
+    <th>Borrow_ID</th>
     <th>User</th>
     <th>Book</th>
+    <th>Author</th>
     <th>Issue Date</th>
     <th>Return Date</th>
+    <th>Fine Paid</th>
 </tr>
 
 {% for record in closed_records %}
 <tr>
+    <td>{{record.id}}</td>
     <td>{{ record.user }}</td>
     <td>{{record.book}}</td>
+    <td>{{record.book.author}}</td>
     <td>{{ record.issue_date|date:"Y-m-d" }}</td>
     <td>{{ record.return_date|date:"Y-m-d" }}</td>
+    <td></td>
 </tr>
 {% endfor %}
 
