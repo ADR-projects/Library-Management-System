@@ -112,3 +112,16 @@ def add_user(request):
             return redirect('users') // i want to keep the UserForm Data in 'form'
 
 For the form logic we will use custom calculation code defined by Models.
+
+Hosting information: 
+1. Prep the project locally
+
+Make sure:
+
+DEBUG = False
+Add your domain to:
+ALLOWED_HOSTS = ['yourusername.pythonanywhere.com']
+Static files:
+python manage.py collectstatic
+Freeze requirements:
+pip freeze > requirements.txt
