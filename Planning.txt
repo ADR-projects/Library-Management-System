@@ -1,3 +1,4 @@
+This planning involves using Model View Template  architectural pattern, using the django framework
 models -> migrate -> forms -> views -> urls
 templates
 static
