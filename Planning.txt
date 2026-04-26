@@ -1,4 +1,4 @@
-This planning involves using Model View Template  architectural pattern, using the django framework
+This planning involves using Model View Template  architectural pattern, using the django framework.
 models -> migrate -> forms -> views -> urls
 templates
 static
@@ -110,3 +110,5 @@ def add_user(request):
             user.status = 'active'
             user.save()
             return redirect('users') // i want to keep the UserForm Data in 'form'
+
+For the form logic we will use custom calculation code defined by Models.
